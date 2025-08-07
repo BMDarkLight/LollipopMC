@@ -1,0 +1,56 @@
+name: Build Qt Project
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+        arch: [x64, arm64]
+
+    runs-on: ${{ matrix.os }}
+
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v4
+
+      - name: Set up CMake
+        uses: jwlawson/actions-setup-cmake@v1
+        with:
+          cmake-version: "3.26.4"
+
+      - name: Install Qt (Linux/macOS)
+        if: ${{ matrix.os != 'windows-latest' }}
+        uses: jurplel/install-qt-action@v3
+        with:
+          version: 6.6.1
+          arch: ${{ matrix.arch }}
+          host: ${{ matrix.os == 'macos-latest' && 'mac' || 'linux' }}
+          setup-python: false
+          install-deps: true
+
+      - name: Install Qt (Windows)
+        if: ${{ matrix.os == 'windows-latest' }}
+        uses: jurplel/install-qt-action@v3
+        with:
+          version: 6.6.1
+          arch: win32_msvc2019_64
+          setup-python: false
+
+      - name: Configure CMake
+        run: >
+          cmake -S . -B build
+          -DCMAKE_PREFIX_PATH=$Qt6_DIR
+          -DCMAKE_BUILD_TYPE=Release
+
+      - name: Build
+        run: cmake --build build --config Release
+
+      - name: Run CMake check
+        run: cmake --build build --target help
