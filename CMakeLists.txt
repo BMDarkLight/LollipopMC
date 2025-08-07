@@ -1,5 +1,7 @@
 cmake_minimum_required(VERSION 3.16)
 
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+
 project(MinecraftLauncher VERSION 0.1 LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD 17)
@@ -18,8 +20,12 @@ include_directories(
 
 file(GLOB_RECURSE LAUNCHER_SOURCES
     launcher/src/*.cpp
+    launcher/src/*.c
+    launcher/include/*.h
     launcher/include/*.hpp
     launcher/*.cpp
+    launcher/*.h
+    launcher/*.c
 )
 
 add_executable(${PROJECT_NAME}
