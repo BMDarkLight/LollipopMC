@@ -1,0 +1,20 @@
+*.cpp text
+*.hpp text
+*.h text
+*.c text
+*.pro text
+*.qrc text
+*.cmake text
+CMakeLists.txt text
+
+* text=auto
+
+*.png binary
+*.jpg binary
+*.ico binary
+*.exe binary
+*.dll binary
+*.so binary
+*.dylib binary
+
+*.qrc linguist-language=XML

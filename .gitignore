@@ -1,56 +1,51 @@
-# C++ objects and libs
-*.slo
-*.lo
-*.o
-*.a
-*.la
-*.lai
-*.so
-*.dll
-*.dylib
+/build/
+/CMakeFiles/
+/CMakeCache.txt
+/Makefile
+/install_manifest.txt
+/cmake_install.cmake
 
-# Qt-specific generated files
-build
-object_script.*.Release
-object_script.*.Debug
-*_plugin_import.cpp
-/.qmake.cache
-/.qmake.stash
+*.moc
+*.qrc.depends
+*.qrc
+*.autosave
 *.pro.user
 *.pro.user.*
-*.qbs.user
-*.qbs.user.*
-*.moc
-moc_*.cpp
-moc_*.h
-qrc_*.cpp
-ui_*.h
-*.qmlc
-*.jsc
-Makefile*
-*build-*
-*.qm
-*.prl
-
-# Qt unit tests
-target_wrapper.*
-
-# QtCreator temporary files
-*.autosave
-
-# QtCreator QML-related files
 *.qmlproject.user
 *.qmlproject.user.*
 
-# QtCreator CMake-related files
-CMakeLists.txt.user*
+.vscode/
+.idea/
+*.swp
+*.swo
+*.bak
 
-# QtCreator 4.8+ compilation database
-compile_commands.json
+*.o
+*.obj
+*.lo
+*.a
+*.lib
+*.so
+*.dll
+*.dylib
+*.exe
+*.out
 
-# QtCreator local machine specific files for imported projects
-*creator.user*
-
-# Platform-specific temporary files
 .DS_Store
 Thumbs.db
+
+*.log
+*.tmp
+
+*.qrc.depends
+*.moc
+*.rcc
+*.gch
+
+__pycache__/
+*.pyc
+*.pyo
+
+*.user
+*.config
+*.env
